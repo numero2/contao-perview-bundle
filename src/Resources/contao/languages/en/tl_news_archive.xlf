@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<xliff version="1.1">
+<file datatype="php" original="src/Resources/contao/languages/en/tl_news_archive.php" source-language="en">
+<body>
+    <!-- LEGENDS -->
+    <trans-unit id="tl_news_archive.perview_legend">
+        <source>perview®</source>
+    </trans-unit>
+    <!-- FIELDS -->
+    <trans-unit id="tl_news_archive.perview_enable.0">
+        <source>Enable perview import</source>
+    </trans-unit>
+    <trans-unit id="tl_news_archive.perview_enable.1">
+        <source>Enable the import of job advertisements from perview.</source>
+    </trans-unit>
+    <trans-unit id="tl_news_archive.perview_user.0">
+        <source>Username</source>
+    </trans-unit>
+    <trans-unit id="tl_news_archive.perview_user.1">
+        <source>Please define the username as provided by perview.</source>
+    </trans-unit>
+    <trans-unit id="tl_news_archive.perview_password.0">
+        <source>Password</source>
+    </trans-unit>
+    <trans-unit id="tl_news_archive.perview_password.1">
+        <source>Please define the password as provided by perview.</source>
+    </trans-unit>
+    <trans-unit id="tl_news_archive.perview_channel.0">
+        <source>Channel</source>
+    </trans-unit>
+    <trans-unit id="tl_news_archive.perview_channel.1">
+        <source>Please select the correct channel for the job advertisements.</source>
+    </trans-unit>
+    <trans-unit id="tl_news_archive.perview_language.0">
+        <source>Language</source>
+    </trans-unit>
+    <trans-unit id="tl_news_archive.perview_language.1">
+        <source>Please select the desired language for the job advertisements.</source>
+    </trans-unit>
+    <trans-unit id="tl_news_archive.perview_default_author.0">
+        <source>Author</source>
+    </trans-unit>
+    <trans-unit id="tl_news_archive.perview_default_author.1">
+        <source>Here you can change the author which will be set for all imported advertisements.</source>
+    </trans-unit>
+    <!-- OPTIONS -->
+    <trans-unit id="tl_news_archive.channels.own_website">
+        <source>Own website</source>
+    </trans-unit>
+    <trans-unit id="tl_news_archive.channels.freeoffering">
+        <source>Free offering</source>
+    </trans-unit>
+</body>
+</file>
+</xliff>

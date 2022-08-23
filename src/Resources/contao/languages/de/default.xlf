@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<xliff version="1.1">
+<file datatype="php" original="src/Resources/contao/languages/de/default.php" source-language="en" target-language="de">
+<body>
+    <trans-unit id="perview.msg.import_success">
+        <source>Advertisements imported successfully. %d new advertisements, %d updated.</source>
+        <target>Stellenanzeigen erfolgreich importiert. %d neue Stellen, %d aktualisiert.</target>
+    </trans-unit>
+    <trans-unit id="perview.msg.import_error">
+        <source>There was a problem importing new advertisements, please see the System-Log.</source>
+        <target>Es gab ein Problem währen des Imports der neuen Stellenanzeigen. Bitte schau in das System-Log.</target>
+    </trans-unit>
+</body>
+</file>
+</xliff>

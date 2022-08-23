@@ -1,0 +1,13 @@
+services:
+    _defaults:
+        public: true
+
+    numero2_perview.listener.data_container.news_archive:
+        class: numero2\PerviewBundle\EventListener\DataContainer\NewsArchiveListener
+        arguments:
+            - '@contao.translation.translator'
+
+    numero2_perview.listener.data_container.news:
+        class: numero2\PerviewBundle\EventListener\DataContainer\NewsListener
+        arguments:
+            - '@contao.framework'

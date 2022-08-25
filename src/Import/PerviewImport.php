@@ -162,6 +162,13 @@ class PerviewImport {
         // add message for backend
         if( !$silent ) {
 
+            if( empty($ads) ) {
+
+                Message::addError(
+                    $this->translator->trans('ERR.general', [], 'contao_default')
+                );
+            }
+
             if( $results[self::STATUS_ERROR] !== 0 ) {
 
                 Message::addError(
@@ -189,7 +196,7 @@ class PerviewImport {
      *
      * @return int|null
      */
-    private function importAdvertisement( $position, NewsArchiveModel $archive ): ?int {
+    private function importAdvertisement( object $position, NewsArchiveModel $archive ): ?int {
 
         // find existing news...
         $news = null;

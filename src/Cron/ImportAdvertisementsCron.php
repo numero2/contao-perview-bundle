@@ -50,44 +50,6 @@ class ImportAdvertisementsCron {
 
     public function __invoke(): void {
 
-        /*
-        $applications = $this->connection->fetchAllAssociative("
-            SELECT
-                a.id,
-                a.dateAdded,
-                o.deleteApplicationsInterval
-            FROM " . JobApplicationModel::getTable() . " AS a
-                JOIN " . JobOfferModel::getTable() . " o ON (a.offer = o.id)
-            WHERE
-                o.deleteApplications='1'
-        ");
-
-        if( !empty($applications) ) {
-
-            $numDeleted = 0;
-
-            foreach( $applications as $application ) {
-
-                $aInterval = [];
-                $aInterval = deserialize($application['deleteApplicationsInterval']);
-
-                if( !empty($aInterval) && $application['dateAdded'] < strtotime('-'.$aInterval['value'].' '.$aInterval['unit']) ) {
-
-                    $this->connection->prepare("DELETE FROM " . JobApplicationLogModel::getTable() . " WHERE pid=:application_id")->execute(['application_id'=>$application['id']]);
-                    $this->connection->prepare("DELETE FROM " . JobApplicationModel::getTable() . " WHERE id=:application_id")->execute(['application_id'=>$application['id']]);
-
-                    $numDeleted++;
-                }
-            }
-
-            if( $numDeleted > 0 ) {
-
-                $this->logger->info(
-                    sprintf('Deleted %d expired job applications',$numDeleted)
-                ,   ['contao' => new ContaoContext(__METHOD__, ContaoContext::CRON)]
-                );
-            }
-        }
-        */
+        // TODO
     }
 }

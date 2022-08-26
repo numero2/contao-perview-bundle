@@ -91,11 +91,11 @@ class PerviewImport {
 
     public function __invoke(): void {
 
-        // run import for current archive (while in the backend)
-        if( $this->requestStack->getCurrentRequest() && $this->scopeMatcher->isBackendRequest($this->requestStack->getCurrentRequest()) ) {
+        $id = null;
+        $id = Input::get('id');
 
-            $id = null;
-            $id = Input::get('id');
+        // run import for current archive (while in the backend)
+        if( $this->requestStack->getCurrentRequest() && $this->scopeMatcher->isBackendRequest($this->requestStack->getCurrentRequest()) && $id ) {
 
             $archive = null;
             $archive = NewsArchiveModel::findOneById($id);
@@ -167,22 +167,43 @@ class PerviewImport {
                 Message::addError(
                     $this->translator->trans('ERR.general', [], 'contao_default')
                 );
+
+            } else {
+
+                if( $results[self::STATUS_ERROR] !== 0 ) {
+
+                    Message::addError(
+                        $this->translator->trans('perview.msg.import_error', [], 'contao_default')
+                    );
+                }
+
+                if( $results[self::STATUS_NEW] || $results[self::STATUS_UPDATE] ) {
+
+                    Message::addInfo(sprintf(
+                        $this->translator->trans('perview.msg.import_success', [], 'contao_default')
+                    ,   $results[self::STATUS_NEW]
+                    ,   $results[self::STATUS_UPDATE]
+                    ));
+                }
             }
 
-            if( $results[self::STATUS_ERROR] !== 0 ) {
+        } else {
 
-                Message::addError(
-                    $this->translator->trans('perview.msg.import_error', [], 'contao_default')
-                );
-            }
+            if( empty($ads) ) {
 
-            if( $results[self::STATUS_NEW] || $results[self::STATUS_UPDATE] ) {
+                $this->logger->log(LogLevel::ERROR, 'Could not import job advertisements for news archive ID ' .$archive->id, ['contao' => new ContaoContext(__METHOD__, ContaoContext::ERROR)]);
 
-                Message::addInfo(sprintf(
-                    $this->translator->trans('perview.msg.import_success', [], 'contao_default')
-                ,   $results[self::STATUS_NEW]
-                ,   $results[self::STATUS_UPDATE]
-                ));
+            } else {
+
+                if( $results[self::STATUS_ERROR] !== 0 ) {
+
+                    $this->logger->log(LogLevel::ERROR, 'Failed to import ' .$results[self::STATUS_ERROR]. ' job advertisements for news archive ID ' .$archive->id, ['contao' => new ContaoContext(__METHOD__, ContaoContext::ERROR)]);
+                }
+
+                if( $results[self::STATUS_NEW] || $results[self::STATUS_UPDATE] ) {
+
+                    $this->logger->log(LogLevel::INFO, 'Successfully imported job advertisements for news archive ID ' .$archive->id. ' (' .$results[self::STATUS_NEW]. ' new / ' .$results[self::STATUS_UPDATE]. ' updated)', ['contao' => new ContaoContext(__METHOD__, ContaoContext::GENERAL)]);
+                }
             }
         }
     }

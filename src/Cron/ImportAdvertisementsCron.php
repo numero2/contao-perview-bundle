@@ -12,44 +12,29 @@
 
 namespace numero2\PerviewBundle\Cron;
 
-use Contao\CoreBundle\Monolog\ContaoContext;
 use Contao\CoreBundle\ServiceAnnotation\CronJob;
-use Doctrine\DBAL\Connection;
-use numero2\PerviewBundle\JobApplicationLogModel;
-use numero2\PerviewBundle\JobApplicationModel;
-use numero2\PerviewBundle\JobOfferModel;
-use Psr\Log\LoggerInterface;
-use Psr\Log\LogLevel;
+use numero2\PerviewBundle\Import\PerviewImport;
 
 
 /**
- * TODO
- *
  * @CronJob("daily")
  */
 class ImportAdvertisementsCron {
 
 
     /**
-     * @var Doctrine\DBAL\Connection
+     * @var PerviewImport
      */
-    private $connection;
-
-    /**
-     * @var Psr\Log\LoggerInterface
-     */
-    private $logger;
+    private $importer;
 
 
-    public function __construct( Connection $connection, LoggerInterface $logger ) {
+    public function __construct( PerviewImport $importer ) {
 
-        $this->connection = $connection;
-        $this->logger = $logger;
+        $this->importer = $importer;
     }
-
 
     public function __invoke(): void {
 
-        // TODO
+        $this->importer->__invoke();
     }
 }

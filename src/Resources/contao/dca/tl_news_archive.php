@@ -15,7 +15,7 @@ use Contao\DataContainer;
 
 
 $GLOBALS['TL_DCA']['tl_news_archive']['palettes']['__selector__'][] = 'perview_enable';
-$GLOBALS['TL_DCA']['tl_news_archive']['subpalettes']['perview_enable'] = 'personio_xml_uri,perview_user,perview_password,perview_channel,perview_language,perview_default_author';
+$GLOBALS['TL_DCA']['tl_news_archive']['subpalettes']['perview_enable'] = 'perview_user,perview_password,perview_channel,perview_language,perview_default_author';
 
 
 $GLOBALS['TL_DCA']['tl_news_archive']['fields'] = array_merge(

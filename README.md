@@ -11,7 +11,7 @@ Import job advertisements from [perview®](https://perview.de/) as news into Con
 System requirements
 --
 
-* [Contao 4.9](https://github.com/contao/contao) (or newer)
+* [Contao 4.13](https://github.com/contao/contao) (or newer)
 
 Installation
 --

@@ -6,7 +6,7 @@
  * @author    Benny Born <benny.born@numero2.de>
  * @author    Michael Bösherz <michael.boesherz@numero2.de>
  * @license   Commercial
- * @copyright Copyright (c) 2022, numero2 - Agentur für digitales Marketing GbR
+ * @copyright Copyright (c) 2024, numero2 - Agentur für digitales Marketing GbR
  */
 
 
@@ -149,8 +149,8 @@ class PerviewImport {
 
             // initially hide all job listings in current archive to make sure
             // deleted listings are not shown anymore
-            $this->connection->prepare("UPDATE ".NewsModel::getTable()." SET published = 0 WHERE perview_id != '0' AND published = 1 AND pid = :pid")
-            ->execute(['pid'=> $archive->id]);
+            $this->connection->prepare("UPDATE ".NewsModel::getTable()." SET published = '' WHERE perview_id != '0' AND published = '1' AND pid = :pid")
+                ->execute(['pid'=> $archive->id]);
 
             foreach( $ads as $ad ) {
 
@@ -276,7 +276,7 @@ class PerviewImport {
             $content->save();
         }
 
-        $news->published = true;
+        $news->published = '1';
 
         // HOOK: add custom logic
         if( isset($GLOBALS['TL_HOOKS']['parsePerviewPosition']) && \is_array($GLOBALS['TL_HOOKS']['parsePerviewPosition']) ) {

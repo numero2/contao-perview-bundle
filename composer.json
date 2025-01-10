@@ -37,7 +37,12 @@
             "numero2\\PerviewBundle\\": "src/"
         },
         "classmap": [
-            "src/Resources/contao/"
+            "contao/"
+        ],
+        "exclude-from-classmap": [
+            "contao/config/",
+            "contao/dca/",
+            "contao/languages/"
         ]
     },
     "scripts": {

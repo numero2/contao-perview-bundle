@@ -6,12 +6,13 @@
  * @author    Benny Born <benny.born@numero2.de>
  * @author    Michael Bösherz <michael.boesherz@numero2.de>
  * @license   Commercial
- * @copyright Copyright (c) 2022, numero2 - Agentur für digitales Marketing GbR
+ * @copyright Copyright (c) 2025, numero2 - Agentur für digitales Marketing GbR
  */
 
 
 namespace numero2\PerviewBundle\EventListener\DataContainer;
 
+use Contao\ArrayUtil;
 use Contao\CoreBundle\ServiceAnnotation\Callback;
 use Contao\DataContainer;
 use Contao\NewsArchiveModel;
@@ -38,7 +39,7 @@ class NewsListener {
 
         if( $archive && $archive->perview_enable ) {
 
-            array_insert($GLOBALS['TL_DCA']['tl_news']['list']['global_operations'], 1, [
+            ArrayUtil::arrayInsert($GLOBALS['TL_DCA']['tl_news']['list']['global_operations'], 1, [
                 'perview_import' => [
                     'label'     => &$GLOBALS['TL_LANG']['tl_news']['perview_import']
                 ,   'href'      => 'key=perview_import'
